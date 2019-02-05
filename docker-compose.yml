@@ -1,25 +1,25 @@
 version: '3'
 
 services:
-  web:
-    image: nginx
-    volumes:
-      - ./nginx/app.conf:/etc/nginx/nginx.conf
-    depends_on:
-      - my_app  
-    ports:
-    - 80:80
-  db:
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: mypassword
-    volumes:
-      - ./dados_postgres:/var/lib/postgresql/data
-    ports:
-      - 5432
-  my_app:
-    image: prestoinfordigi/ubuntu-sshd:latest
-    build: .
-    depends_on:
-      - db            
+	web:
+		image: nginx
+		volumes:
+			- ./nginx/app.conf:/etc/nginx/nginx.conf
+		depends_on:
+			- my_app  
+		ports:
+		- 80:80
+	db:
+		image: postgres
+		restart: always
+		environment:
+			POSTGRES_PASSWORD: mypassword
+		volumes:
+			- ./dados_postgres:/var/lib/postgresql/data
+		ports:
+			- 5432
+	my_app:
+		image: prestoinfordigi/ubuntu-sshd:latest
+		build: .
+		depends_on:
+			- db            
